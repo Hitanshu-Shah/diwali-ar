@@ -16,13 +16,13 @@
   
   <body>
     <!-- AR.js Scene -->
-    <a-scene embedded arjs>
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
       
       <!-- This will detect the specific image (Access-branded frame) -->
-      <a-marker type="pattern" url="access-marker.patt">
+      <a-marker type="pattern" url="https://github.com/Hitanshu-Shah/diwali-ar/blob/main/access-marker.patt">
         
         <!-- Add the Access logo -->
-        <a-image src="access-logo.png" position="0 0.5 0" scale="1 1 1"></a-image>
+        <a-image src="https://github.com/Hitanshu-Shah/diwali-ar/blob/main/access-logo.png" position="0 0.5 0" scale="1 1 1"></a-image>
 
         <!-- Thank You Message -->
         <a-text value="Thank you for being with us! Happy Diwali!" position="0 1.5 0" scale="2 2 2" color="#FFD700"></a-text>
