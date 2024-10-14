@@ -54,6 +54,7 @@ ar_html = """
         <img id="access-logo" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png">
         <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
         <img id="rangoli" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/rangoli.png">
+        <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
@@ -65,19 +66,19 @@ ar_html = """
         
         <!-- Rangoli on the ground -->
         <a-image src="#rangoli" position="0 0.01 0" rotation="-90 0 0" scale="2 2 2"></a-image>
-        
-        <!-- Animated floating diyas -->
-        <a-entity position="-1 0.5 0">
-          <a-image src="#diya" scale="0.3 0.3 0.3">
-            <a-animation attribute="position" to="0 0.2 0" dir="alternate" dur="2000" repeat="indefinite"></a-animation>
-          </a-image>
+
+        <!-- Candle arrangement in a circle -->
+        <a-entity>
+          <a-entity gltf-model="#candle-model" position="1 0 0" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="-1 0 0" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="0 0 1" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="0 0 -1" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="0.7 0 0.7" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="-0.7 0 0.7" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="-0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
         </a-entity>
-        <a-entity position="1 0.5 0">
-          <a-image src="#diya" scale="0.3 0.3 0.3">
-            <a-animation attribute="position" to="0 0.2 0" dir="alternate" dur="2000" repeat="indefinite"></a-animation>
-          </a-image>
-        </a-entity>
-        
+
         <!-- Animated fireworks -->
         <a-entity id="fireworks"></a-entity>
       </a-entity>
