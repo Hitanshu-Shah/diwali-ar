@@ -30,14 +30,14 @@ ar_html = """
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
         <video id="diwaliVideo" autoplay loop="true" crossorigin="anonymous" webkit-playsinline playsinline>
-          <source src="https://github.com/Hitanshu-Shah/diwali-ar/blob/main/Happy%20Diwali%20_%20Diwali%20Greeting%20Video%20_%20Diwali%20Wishes%20_%20Deepavali%202021.mp4" type="video/mp4">
+          <source src="https://github.com/Hitanshu-Shah/diwali-ar/raw/main/Happy%20Diwali%20_%20Diwali%20Greeting%20Video%20_%20Diwali%20Wishes%20_%20Deepavali%202021.mp4" type="video/mp4">
         </video>
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
-        <!-- Video texture on a plane (20% larger) -->
-        <a-plane src="#diwaliVideo" width="3.6" height="2.7" position="0 1.5 0" look-at="[camera]"></a-plane>
+        <!-- Video texture on a plane (5% smaller) -->
+        <a-plane src="#diwaliVideo" width="3.42" height="2.565" position="0 1.5 0" look-at="[camera]"></a-plane>
         
         <!-- Diwali message in 3D font -->
         <a-entity
