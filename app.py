@@ -6,7 +6,7 @@ st.set_page_config(page_title="Diwali AR Greeting", layout="centered")
 st.title("Diwali AR Greeting")
 
 st.write("""
-         Scan the QR code or click the link below to experience an AR Diwali greeting!
+         Scan the QR code or click the link below to experience a markerless AR Diwali greeting!
          """)
 
 # Embed the AR HTML directly into the Streamlit app
@@ -14,7 +14,7 @@ ar_html = """
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AR Diwali Greeting</title>
+    <title>AR Diwali Greeting (Markerless)</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
     <style>
@@ -28,22 +28,20 @@ ar_html = """
   </head>
   
   <body>
-    <!-- AR.js Scene -->
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
+    <!-- AR.js Scene without markers -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
       
-      <!-- This will detect the specific image (Access-branded frame) -->
-      <a-marker type="pattern" url="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-marker.patt">
-        
+      <!-- Position AR objects in front of the user -->
+      <a-entity position="0 0 -2">
         <!-- Add the Access logo -->
         <a-image src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png" position="0 0.5 0" scale="1 1 1"></a-image>
 
         <!-- Thank You Message -->
         <a-text value="Thank you for being with us! Happy Diwali!" position="0 1.5 0" scale="2 2 2" color="#FFD700"></a-text>
 
-        <!-- Optionally, you can add 3D models like a diya here or animations -->
+        <!-- Optionally, add a 3D model or other interactive elements -->
         <a-box color="orange" position="0 0.5 0" scale="0.5 0.5 0.5"></a-box>
-      
-      </a-marker>
+      </a-entity>
       
       <!-- AR.js Camera -->
       <a-entity camera></a-entity>
