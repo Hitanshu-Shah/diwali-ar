@@ -13,6 +13,6 @@ st.write("""
 ar_url = "https://your-github-username.github.io/your-repo-name/ar_greeting.html"
 st.markdown(f"[Click here to view the AR greeting]({ar_url})")
 
-# Optionally, show an image of the QR code
-qr_code_image = "qr_code.png"  # If you generated a QR code image, ensure it's in the folder
-st.image(qr_code_image, caption='Scan to view the AR greeting!')
+# # Optionally, show an image of the QR code
+# qr_code_image = "qr_code.png"  # If you generated a QR code image, ensure it's in the folder
+# st.image(qr_code_image, caption='Scan to view the AR greeting!')
