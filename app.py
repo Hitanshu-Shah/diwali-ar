@@ -19,26 +19,14 @@ ar_html = """
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
+      body { margin: 0; overflow: hidden; }
       .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 100%; width: 100%; position: absolute; top: 0; left: 0;
+        background-color: rgba(0, 0, 0, 0.8); z-index: 9999;
+        display: flex; justify-content: center; align-items: center;
       }
       .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
+        text-align: center; font-size: 1.25em; color: white;
       }
     </style>
   </head>
@@ -57,9 +45,11 @@ ar_html = """
 
       <a-entity id="diwaliScene" position="0 0 -3">
         <!-- YouTube video -->
-        <a-entity position="0 1.5 0" scale="2 1.5 1">
-          <a-plane color="#000" opacity="0.8" width="2" height="1.5"></a-plane>
-          <a-video src="https://www.youtube.com/embed/XrKwsV_NdnM?autoplay=1&loop=1&playlist=XrKwsV_NdnM" width="1.8" height="1.35" position="0 0 0.01"></a-video>
+        <a-entity position="0 1.5 0" scale="1 0.75 1">
+          <a-plane color="#000" opacity="0.8" width="1" height="0.75"></a-plane>
+          <a-entity position="0 0 0.01">
+            <a-iframe src="https://www.youtube.com/embed/XrKwsV_NdnM?autoplay=1&loop=1&playlist=XrKwsV_NdnM&controls=0&enablejsapi=1" width="0.9" height="0.675"></a-iframe>
+          </a-entity>
         </a-entity>
         
         <!-- Diwali message in 3D font -->
@@ -95,7 +85,7 @@ ar_html = """
           <a-entity gltf-model="#candle-model" position="0 0 -1" scale="0.5 0.5 0.5"></a-entity>
           <a-entity gltf-model="#candle-model" position="0.7 0 0.7" scale="0.5 0.5 0.5"></a-entity>
           <a-entity gltf-model="#candle-model" position="0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
-          <a-entity gltf-model="#candle-model" position="-0.7 0 0.7" scale="0.5 0.5 0.5"></a-entity>
+          <a-entity gltf-model="#candle-model" position="0.7 0 0.7" scale="0.5 0.5 0.5"></a-entity>
           <a-entity gltf-model="#candle-model" position="-0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
         </a-entity>
 
