@@ -23,23 +23,46 @@ ar_html = """
         margin: 0;
         overflow: hidden;
       }
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
     </style>
   </head>
   <body style="margin: 0px; overflow: hidden;">
-
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
+        <img id="access-logo" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png">
+        <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
-        <!-- YouTube video embedded in an iframe -->
-        <a-entity geometry="primitive: plane; width: 3; height: 2" position="0 1.5 0" look-at="[camera]">
-          <a-entity material="shader: html; target: #videoElement"></a-entity>
-        </a-entity>
+        <!-- Access logo -->
+        <a-image src="#access-logo" position="0 1.5 0" scale="1 1 1" look-at="[camera]"></a-image>
+        
+        <!-- Diwali message -->
+        <a-text value="Happy Diwali and a Prosperou New Year! \n - Chandresh Shah & The Access Team" position="0 1 0" scale="0.5 0.5 0.5" color="#FFD700" align="center" look-at="[camera]"></a-text>
+        
 
         <!-- Candle arrangement in a circle -->
         <a-entity>
@@ -53,28 +76,12 @@ ar_html = """
           <a-entity gltf-model="#candle-model" position="-0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
         </a-entity>
 
-        <!-- 3D Text message over the video -->
-        <a-entity
-          text="value: Thank you for being with us! Happy Diwali!; color: #FFD700; width: 4; align: center"
-          position="0 2 0"
-          scale="0.5 0.5 0.5"
-          rotation="0 0 0"
-          look-at="[camera]"
-          geometry="primitive: plane; height: auto; width: auto;"
-          material="shader: flat;">
-        </a-entity>
-
         <!-- Animated fireworks -->
         <a-entity id="fireworks"></a-entity>
       </a-entity>
 
       <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
-
     </a-scene>
-
-    <!-- Add iframe for YouTube video -->
-    <iframe id="videoElement" width="560" height="315" src="https://www.youtube.com/embed/XrKwsV_NdnM?autoplay=1&loop=1&playlist=XrKwsV_NdnM" 
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <script>
       window.onload = function() {
@@ -125,6 +132,8 @@ ar_html = """
         }
 
         scene.addEventListener('loaded', () => {
+          const loader = document.querySelector('.arjs-loader');
+          loader.style.display = 'none';
           launchFireworks();
         });
       };
