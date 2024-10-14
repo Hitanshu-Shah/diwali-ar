@@ -23,29 +23,10 @@ ar_html = """
         margin: 0;
         overflow: hidden;
       }
-      .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
-      }
     </style>
   </head>
   <body style="margin: 0px; overflow: hidden;">
-    <div class="arjs-loader">
-      <div>Loading, please wait...</div>
-    </div>
+
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
@@ -70,6 +51,17 @@ ar_html = """
           <a-entity gltf-model="#candle-model" position="0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
           <a-entity gltf-model="#candle-model" position="-0.7 0 0.7" scale="0.5 0.5 0.5"></a-entity>
           <a-entity gltf-model="#candle-model" position="-0.7 0 -0.7" scale="0.5 0.5 0.5"></a-entity>
+        </a-entity>
+
+        <!-- 3D Text message over the video -->
+        <a-entity
+          text="value: Thank you for being with us! Happy Diwali!; color: #FFD700; width: 4; align: center"
+          position="0 2 0"
+          scale="0.5 0.5 0.5"
+          rotation="0 0 0"
+          look-at="[camera]"
+          geometry="primitive: plane; height: auto; width: auto;"
+          material="shader: flat;">
         </a-entity>
 
         <!-- Animated fireworks -->
@@ -133,8 +125,6 @@ ar_html = """
         }
 
         scene.addEventListener('loaded', () => {
-          const loader = document.querySelector('.arjs-loader');
-          loader.style.display = 'none';
           launchFireworks();
         });
       };
