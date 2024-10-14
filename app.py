@@ -1,3 +1,16 @@
+import streamlit as st
+
+# Set up Streamlit page configuration
+st.set_page_config(page_title="Diwali AR Greeting", layout="centered")
+
+st.title("Diwali AR Greeting")
+
+st.write("""
+ Please allow camera Access to see this greeting in Augmented Reality
+ """)
+
+# Embed the updated markerless AR HTML directly into the Streamlit app
+ar_html = """
 <!DOCTYPE html>
 <html>
   <head>
@@ -150,3 +163,7 @@
     </script>
   </body>
 </html>
+"""
+
+# Display the HTML content in Streamlit
+st.components.v1.html(ar_html, height=600, scrolling=False)
