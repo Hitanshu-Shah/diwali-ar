@@ -1,16 +1,3 @@
-import streamlit as st
-
-# Set up Streamlit page configuration
-st.set_page_config(page_title="Diwali AR Greeting", layout="centered")
-
-st.title("Diwali AR Greeting")
-
-st.write("""
- Please allow camera Access to see this greeting in Augmented Reality
- """)
-
-# Embed the updated markerless AR HTML directly into the Streamlit app
-ar_html = """
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,18 +38,41 @@ ar_html = """
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
-        <img id="access-logo" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png">
         <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
-        <!-- Access logo -->
-        <a-image src="#access-logo" position="0 1.5 0" scale="1 1 1" look-at="[camera]"></a-image>
+        <!-- YouTube video -->
+        <a-entity position="0 1.5 0" scale="2 1.5 1">
+          <a-plane color="#000" opacity="0.8" width="2" height="1.5"></a-plane>
+          <a-video src="https://www.youtube.com/embed/XrKwsV_NdnM?autoplay=1&loop=1&playlist=XrKwsV_NdnM" width="1.8" height="1.35" position="0 0 0.01"></a-video>
+        </a-entity>
         
-        <!-- Diwali message -->
-        <a-text value="Happy Diwali and a Prosperou New Year! \n - Chandresh Shah & The Access Team" position="0 1 0" scale="0.5 0.5 0.5" color="#FFD700" align="center" look-at="[camera]"></a-text>
+        <!-- Diwali message in 3D font -->
+        <a-entity
+          text="value: Happy Diwali and a Prosperous New Year!; 
+                font: exo2bold; 
+                color: #FFD700; 
+                align: center; 
+                width: 4; 
+                baseline: center"
+          position="0 0.5 0"
+          scale="1 1 1"
+          look-at="[camera]"
+        ></a-entity>
         
+        <a-entity
+          text="value: - Chandresh Shah & The Access Team; 
+                font: exo2bold; 
+                color: #FFD700; 
+                align: center; 
+                width: 4; 
+                baseline: center"
+          position="0 0.2 0"
+          scale="0.8 0.8 0.8"
+          look-at="[camera]"
+        ></a-entity>
 
         <!-- Candle arrangement in a circle -->
         <a-entity>
@@ -140,7 +150,3 @@ ar_html = """
     </script>
   </body>
 </html>
-"""
-
-# Display the HTML content in Streamlit
-st.components.v1.html(ar_html, height=600, scrolling=False)
