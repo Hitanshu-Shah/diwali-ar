@@ -9,11 +9,10 @@ st.write("""
          Scan the QR code or click the link below to experience an AR Diwali greeting!
          """)
 
-# Link to the hosted AR file
-html_file = open("DiwaliAR.html", 'r', encoding='utf-8').read()
+# Provide a clickable link to the hosted AR experience (this opens directly to the AR page)
+ar_url = "https://your-github-username.github.io/your-repo-name/ar_greeting.html"
+st.markdown(f"[Click here to view the AR greeting]({ar_url})")
 
-# Embed the HTML file inside the Streamlit app
-st.components.v1.html(html_file, height=600, scrolling=True)
-
-# Provide a clickable link to the AR experience if needed
-st.markdown(f"[View AR Experience](./ar_greeting.html)")
+# Optionally, show an image of the QR code
+qr_code_image = "qr_code.png"  # If you generated a QR code image, ensure it's in the folder
+st.image(qr_code_image, caption='Scan to view the AR greeting!')
