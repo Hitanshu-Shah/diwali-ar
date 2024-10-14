@@ -53,7 +53,6 @@ ar_html = """
       <a-assets>
         <img id="access-logo" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png">
         <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
-        <img id="rangoli" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/rangoli.png">
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
 
@@ -63,9 +62,6 @@ ar_html = """
         
         <!-- Diwali message -->
         <a-text value="Happy Diwali and a Prosperou New Year! \n - Chandresh Shah & The Access Team" position="0 1 0" scale="0.5 0.5 0.5" color="#FFD700" align="center" look-at="[camera]"></a-text>
-        
-        <!-- Rangoli on the ground -->
-        <a-image src="#rangoli" position="0 0.01 0" rotation="-90 0 0" scale="2 2 2"></a-image>
 
         <!-- Candle arrangement in a circle -->
         <a-entity>
