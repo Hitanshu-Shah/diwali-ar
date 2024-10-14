@@ -30,7 +30,7 @@ ar_html = """
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
         <video id="diwaliVideo" autoplay loop="true" crossorigin="anonymous" webkit-playsinline playsinline>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <source src="https://github.com/Hitanshu-Shah/diwali-ar/blob/main/Happy%20Diwali%20_%20Diwali%20Greeting%20Video%20_%20Diwali%20Wishes%20_%20Deepavali%202021.mp4" type="video/mp4">
         </video>
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
