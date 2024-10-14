@@ -14,7 +14,7 @@ ar_html = """
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AR Diwali Greeting (Markerless)</title>
+    <title>Enhanced AR Diwali Greeting (Markerless)</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
     <style>
@@ -28,24 +28,56 @@ ar_html = """
   </head>
   
   <body>
-    <!-- AR.js Scene without markers -->
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false">
+      <a-assets>
+        <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
+        <img id="rangoli" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/rangoli.png">
+      </a-assets>
       
-      <!-- Place AR objects in front of the camera at a specific distance -->
-      <a-entity position="0 1 -4" rotation="0 180 0" scale="1 1 1">
-        <!-- Add the Access logo floating in space -->
-        <a-image src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png" position="0 1 0" scale="1.5 1.5 1.5"></a-image>
-
-        <!-- Thank You Message positioned above the logo -->
-        <a-text value="Thank you for being with us! Happy Diwali!" position="0 2 0" scale="3 3 3" color="#FFD700"></a-text>
-
-        <!-- Add a rotating box for better 3D depth perception -->
-        <a-box color="orange" position="0 -1 0" scale="0.5 0.5 0.5" rotation="0 45 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 3000"></a-box>
+      <a-entity position="0 0 -4">
+        <!-- Access logo (corrected orientation) -->
+        <a-image src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png" position="0 2.5 0" scale="1 1 1" rotation="0 0 0"></a-image>
+        
+        <!-- Diwali message -->
+        <a-text value="Thank you for being with us!\nHappy Diwali!" position="0 1.8 0" scale="1 1 1" color="#FFD700" align="center"></a-text>
+        
+        <!-- Diya image -->
+        <a-image src="#diya" position="-1 0.5 0" scale="0.5 0.5 0.5"></a-image>
+        <a-image src="#diya" position="1 0.5 0" scale="0.5 0.5 0.5"></a-image>
+        
+        <!-- Rangoli on the ground -->
+        <a-image src="#rangoli" position="0 -1 0" rotation="-90 0 0" scale="2 2 2"></a-image>
+        
+        <!-- Animated fireworks -->
+        <a-entity position="-2 1 0">
+          <a-sphere color="#ff0000" radius="0.05">
+            <a-animation attribute="position" to="0 2 0" dur="1000" repeat="indefinite"></a-animation>
+            <a-animation attribute="scale" to="2 2 2" dur="1000" repeat="indefinite"></a-animation>
+            <a-animation attribute="opacity" to="0" dur="1000" repeat="indefinite"></a-animation>
+          </a-sphere>
+        </a-entity>
+        <a-entity position="2 1 0">
+          <a-sphere color="#00ff00" radius="0.05">
+            <a-animation attribute="position" to="0 2 0" dur="1500" repeat="indefinite"></a-animation>
+            <a-animation attribute="scale" to="2 2 2" dur="1500" repeat="indefinite"></a-animation>
+            <a-animation attribute="opacity" to="0" dur="1500" repeat="indefinite"></a-animation>
+          </a-sphere>
+        </a-entity>
+        
+        <!-- Animated floating diyas -->
+        <a-entity position="-1.5 0 0">
+          <a-image src="#diya" scale="0.3 0.3 0.3">
+            <a-animation attribute="position" to="0 0.2 0" dir="alternate" dur="2000" repeat="indefinite"></a-animation>
+          </a-image>
+        </a-entity>
+        <a-entity position="1.5 0 0">
+          <a-image src="#diya" scale="0.3 0.3 0.3">
+            <a-animation attribute="position" to="0 0.2 0" dir="alternate" dur="2000" repeat="indefinite"></a-animation>
+          </a-image>
+        </a-entity>
       </a-entity>
-
-      <!-- AR.js Camera for the webcam feed -->
-      <a-entity camera look-controls></a-entity>
-
+      
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
