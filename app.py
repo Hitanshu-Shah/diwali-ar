@@ -52,8 +52,9 @@ ar_html = """
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
         <img id="access-logo" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png">
+        <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
+        <img id="rangoli" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/rangoli.png">
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
-        <a-asset-item id="rangoli-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/blob/main/Oriental%20rug.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
@@ -63,8 +64,8 @@ ar_html = """
         <!-- Diwali message -->
         <a-text value="Thank you for being with us!\nHappy Diwali!" position="0 1 0" scale="0.5 0.5 0.5" color="#FFD700" align="center" look-at="[camera]"></a-text>
         
-        <!-- Rangoli 3D model on the ground -->
-        <a-entity gltf-model="#rangoli-model" position="0 0.01 0" rotation="-90 0 0" scale="2 2 2"></a-entity>
+        <!-- Rangoli on the ground -->
+        <a-image src="#rangoli" position="0 0.01 0" rotation="-90 0 0" scale="2 2 2"></a-image>
 
         <!-- Candle arrangement in a circle -->
         <a-entity>
