@@ -51,17 +51,18 @@ ar_html = """
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
-        <img id="access-logo" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/access-logo.png">
-        <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
+        <a-asset-item id="rangoli-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/blob/main/Oriental%20rug.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
-        <!-- Access logo -->
-        <a-image src="#access-logo" position="0 1.5 0" scale="1 1 1" look-at="[camera]"></a-image>
+        <!-- YouTube video embedded in an iframe -->
+        <a-entity geometry="primitive: plane; width: 3; height: 2" position="0 1.5 0" look-at="[camera]">
+          <a-entity material="shader: html; target: #videoElement"></a-entity>
+        </a-entity>
         
-        <!-- Diwali message -->
-        <a-text value="Happy Diwali and a Prosperou New Year! \n - Chandresh Shah & The Access Team" position="0 1 0" scale="0.5 0.5 0.5" color="#000000" align="center" look-at="[camera]"></a-text>
+        <!-- Rangoli 3D model on the ground -->
+        <a-entity gltf-model="#rangoli-model" position="0 0.01 0" rotation="-90 0 0" scale="2 2 2"></a-entity>
 
         <!-- Candle arrangement in a circle -->
         <a-entity>
@@ -80,7 +81,12 @@ ar_html = """
       </a-entity>
 
       <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+
     </a-scene>
+
+    <!-- Add iframe for YouTube video -->
+    <iframe id="videoElement" width="560" height="315" src="https://www.youtube.com/embed/XrKwsV_NdnM?autoplay=1&loop=1&playlist=XrKwsV_NdnM" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <script>
       window.onload = function() {
