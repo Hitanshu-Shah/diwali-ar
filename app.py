@@ -20,37 +20,24 @@ ar_html = """
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <style>
       body { margin: 0; overflow: hidden; }
-      .arjs-loader {
-        height: 100%; width: 100%; position: absolute; top: 0; left: 0;
-        background-color: rgba(0, 0, 0, 0.8); z-index: 9999;
-        display: flex; justify-content: center; align-items: center;
-      }
-      .arjs-loader div {
-        text-align: center; font-size: 1.25em; color: white;
-      }
     </style>
   </head>
   <body style="margin: 0px; overflow: hidden;">
-    <div class="arjs-loader">
-      <div>Loading, please wait...</div>
-    </div>
+
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
-        <img id="diya" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/diya.png">
+        <video id="diwaliVideo" autoplay loop="true" crossorigin="anonymous" webkit-playsinline playsinline>
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
-        <!-- YouTube video -->
-        <a-entity position="0 1.5 0" scale="1 0.75 1">
-          <a-plane color="#000" opacity="0.8" width="1" height="0.75"></a-plane>
-          <a-entity position="0 0 0.01">
-            <a-iframe src="https://www.youtube.com/embed/XrKwsV_NdnM?autoplay=1&loop=1&playlist=XrKwsV_NdnM&controls=0&enablejsapi=1" width="0.9" height="0.675"></a-iframe>
-          </a-entity>
-        </a-entity>
+        <!-- Video texture on a plane (20% larger) -->
+        <a-plane src="#diwaliVideo" width="3.6" height="2.7" position="0 1.5 0" look-at="[camera]"></a-plane>
         
         <!-- Diwali message in 3D font -->
         <a-entity
@@ -93,7 +80,9 @@ ar_html = """
         <a-entity id="fireworks"></a-entity>
       </a-entity>
 
+      <!-- Camera with look-controls to allow user movement -->
       <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+
     </a-scene>
 
     <script>
@@ -145,8 +134,6 @@ ar_html = """
         }
 
         scene.addEventListener('loaded', () => {
-          const loader = document.querySelector('.arjs-loader');
-          loader.style.display = 'none';
           launchFireworks();
         });
       };
