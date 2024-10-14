@@ -82,16 +82,13 @@ ar_html = """
         <a-entity id="fireworks"></a-entity>
       </a-entity>
 
-      <!-- Reactive movement -->
-      <a-entity camera look-controls wasd-controls position="0 1.6 0" id="camera">
-      </a-entity>
+      <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
     </a-scene>
 
     <script>
       window.onload = function() {
         const scene = document.querySelector('a-scene');
         const fireworksContainer = document.querySelector('#fireworks');
-        const camera = document.querySelector('#camera');
 
         function createFirework(x, y, z, color) {
           const firework = document.createElement('a-sphere');
@@ -135,17 +132,6 @@ ar_html = """
             createFirework(x, 0, z, color);
           }, 500);
         }
-
-        // Control the camera movement based on device position
-        window.addEventListener('deviceorientation', (event) => {
-          const alpha = event.alpha;  // rotation around z-axis
-          const beta = event.beta;    // tilt front-back
-          const gamma = event.gamma;  // tilt left-right
-          
-          // Adjust camera position based on beta (front-back tilt)
-          const distance = Math.max(0, 3 - beta / 90);  // Move closer/further based on beta
-          camera.setAttribute('position', `0 ${distance + 1.6} ${-distance}`);
-        });
 
         scene.addEventListener('loaded', () => {
           const loader = document.querySelector('.arjs-loader');
