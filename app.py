@@ -52,7 +52,6 @@ ar_html = """
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
       <a-assets>
         <a-asset-item id="candle-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/main/Candle.glb"></a-asset-item>
-        <a-asset-item id="rangoli-model" src="https://raw.githubusercontent.com/Hitanshu-Shah/diwali-ar/blob/main/Oriental%20rug.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="diwaliScene" position="0 0 -3">
@@ -60,9 +59,6 @@ ar_html = """
         <a-entity geometry="primitive: plane; width: 3; height: 2" position="0 1.5 0" look-at="[camera]">
           <a-entity material="shader: html; target: #videoElement"></a-entity>
         </a-entity>
-        
-        <!-- Rangoli 3D model on the ground -->
-        <a-entity gltf-model="#rangoli-model" position="0 0.01 0" rotation="-90 0 0" scale="2 2 2"></a-entity>
 
         <!-- Candle arrangement in a circle -->
         <a-entity>
